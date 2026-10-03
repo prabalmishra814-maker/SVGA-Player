@@ -618,10 +618,10 @@ public class MainActivity extends AppCompatActivity {
         topBar.addView(tvFullscreenTitle);
 
         android.widget.ImageButton btnClose = new android.widget.ImageButton(this);
-        btnClose.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
-        btnClose.setColorFilter(0xFFFFFFFF);
+        btnClose.setImageResource(R.drawable.minimize);
+        btnClose.setScaleType(android.widget.ImageView.ScaleType.FIT_CENTER);
         btnClose.setBackgroundColor(0x44FFFFFF);
-        btnClose.setPadding(16, 16, 16, 16);
+        btnClose.setPadding(12, 12, 12, 12);
         RelativeLayout.LayoutParams closeParams = new RelativeLayout.LayoutParams(
                 100,
                 100
