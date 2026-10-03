@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.svga.player)
     implementation(libs.documentfile)
+    implementation(libs.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)

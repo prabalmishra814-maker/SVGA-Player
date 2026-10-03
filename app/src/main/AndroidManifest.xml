@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/whatsapp_image_2026_10_04_at_12_58_43_am"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/whatsapp_image_2026_10_04_at_12_58_43_am"
         android:supportsRtl="true"
         android:theme="@style/Theme.SvgaPlayer">
         <activity

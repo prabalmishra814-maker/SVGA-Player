@@ -4,6 +4,11 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <!-- Splash Screen Branding Icon -->
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/whatsapp_image_2026_10_04_at_12_58_43_am</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">?android:attr/colorBackground</item>
+
         <item name="android:colorBackground">@color/md_theme_dark_background</item>
         <item name="colorSurface">@color/md_theme_dark_surface</item>
         <item name="colorOnSurface">@color/md_theme_dark_onSurface</item>

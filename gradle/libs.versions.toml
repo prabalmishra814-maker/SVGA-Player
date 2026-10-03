@@ -9,6 +9,7 @@ activityKtx = "1.13.0"
 constraintlayout = "2.2.2"
 svgaPlayer = "2.6.1"
 documentfile = "1.1.0"
+splashscreen = "1.0.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -20,6 +21,7 @@ activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 svga-player = { group = "com.github.yyued", name = "SVGAPlayer-Android", version.ref = "svgaPlayer" }
 documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
+splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashscreen" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

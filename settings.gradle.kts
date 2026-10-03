@@ -23,5 +23,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "svga player"
+rootProject.name = "svgaplayer"
 include(":app")

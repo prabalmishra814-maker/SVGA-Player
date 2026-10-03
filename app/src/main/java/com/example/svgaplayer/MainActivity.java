@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        androidx.core.splashscreen.SplashScreen splashScreen = androidx.core.splashscreen.SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
 
         // Make Status Bar transparent
@@ -620,7 +621,7 @@ public class MainActivity extends AppCompatActivity {
         android.widget.ImageButton btnClose = new android.widget.ImageButton(this);
         btnClose.setImageResource(R.drawable.minimize);
         btnClose.setScaleType(android.widget.ImageView.ScaleType.FIT_CENTER);
-        btnClose.setBackgroundColor(0x44FFFFFF);
+        btnClose.setBackgroundColor(Color.TRANSPARENT);
         btnClose.setPadding(12, 12, 12, 12);
         RelativeLayout.LayoutParams closeParams = new RelativeLayout.LayoutParams(
                 100,
