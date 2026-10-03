@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Light Theme Colors (Pure White Background) -->
+    <color name="md_theme_light_background">#FFFFFF</color>
+    <color name="md_theme_light_surface">#F5F5F7</color>
+    <color name="md_theme_light_onSurface">#000000</color>
+    <color name="md_theme_light_onSurfaceVariant">#666666</color>
+    <color name="md_theme_light_cardBackground">#F5F5F7</color>
+    <color name="md_theme_light_cardStroke">#E0E0E0</color>
+
+    <!-- Dark Theme Colors (Pitch Black Background) -->
+    <color name="md_theme_dark_background">#000000</color>
+    <color name="md_theme_dark_surface">#1E1E1E</color>
+    <color name="md_theme_dark_onSurface">#FFFFFF</color>
+    <color name="md_theme_dark_onSurfaceVariant">#AAAAAA</color>
+    <color name="md_theme_dark_cardBackground">#1E1E1E</color>
+    <color name="md_theme_dark_cardStroke">#333333</color>
+</resources>
