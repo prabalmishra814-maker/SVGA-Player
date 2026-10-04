@@ -1,3 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SVGA Player</string>
+    <string name="app_name">SVGA Gallery Player</string>
+    <string name="title_svga">SVGA</string>
+    <string name="title_gallery_player"> Gallery Player</string>
+    <string name="subtitle">Open folder or select .svga files to play</string>
+    <string name="btn_open_folder">Open Folder</string>
+    <string name="btn_select_files">Select Files</string>
+    <string name="btn_open_folder_explorer">Open Folder Explorer (Files List)</string>
+    <string name="label_current_file_name">Current File Name:</string>
+    <string name="btn_rename">Rename</string>
+    <string name="btn_prev">‹ Prev</string>
+    <string name="btn_next">Next ›</string>
+    <string name="btn_fullscreen">Fullscreen</string>
+    <string name="feature_smooth_playback">Smooth Playback</string>
+    <string name="feature_smooth_playback_sub">Fast &amp; Stable</string>
+    <string name="feature_high_quality">High Quality</string>
+    <string name="feature_high_quality_sub">HD Support</string>
+    <string name="feature_multiple_formats">Multiple Formats</string>
+    <string name="feature_multiple_formats_sub">.svga Files</string>
+    <string name="feature_user_friendly">User Friendly</string>
+    <string name="feature_user_friendly_sub">Simple &amp; Clean UI</string>
 </resources>

@@ -1,223 +1,383 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="?android:attr/colorBackground"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <!-- Scrollable content area -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/cardFeatureStrip"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true">
 
-        <!-- Title & Theme Toggle Header Bar -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@id/btnThemeToggle">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SVGA Player"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="?attr/colorOnSurface" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Open folder or select .svga files to play"
-                    android:textSize="12sp"
-                    android:textColor="?attr/colorOnSurfaceVariant"
-                    android:layout_marginTop="2dp" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnThemeToggle"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:paddingHorizontal="10dp"
-                android:text="🌙 Dark Mode"
-                android:textSize="11sp"
-                app:backgroundTint="#FDFDFD"
-                android:textColor="#191A1C"/>
-
-        </RelativeLayout>
-
-        <!-- Select Folder & Files Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:clipToPadding="false">
 
-            <Button
-                android:id="@+id/btnOpenFolder"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:text="📁 Open Folder"
-                android:textSize="13sp"
-                app:backgroundTint="#6B91B4"
-                android:textColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/btnSelectFiles"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:text="📂 Select Files"
-                android:textSize="13sp"
-                app:backgroundTint="#73698A"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-
-        <!-- View Folder Explorer Button -->
-        <Button
-            android:id="@+id/btnViewFolderList"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="gone"
-            android:text="Open Folder Explorer (Files List)"
-            android:textSize="12sp"
-            android:textColor="#2196F3" />
-
-        <!-- Active File Name Card & Rename Button (Initially GONE) -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardFileInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:visibility="gone"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="?attr/colorSurface">
-
+            <!-- 1. HEADER: Logo, Title, Subtitle & Theme Toggle -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="14dp">
+
+                <ImageView
+                    android:id="@+id/ivAppLogo"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/whatsapp_image_2026_10_04_at_9_57_55_am"
+                    android:contentDescription="SVGA Player Logo" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_toStartOf="@id/btnEditName"
-                    android:layout_alignParentStart="true"
+                    android:layout_toEndOf="@id/ivAppLogo"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tvTitleSvga"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_svga"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#38BDF8" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_gallery_player"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Current File Name:"
-                        android:textSize="10sp"
-                        android:textColor="?attr/colorOnSurfaceVariant"
-                        android:backgroundTint="@color/white"/>
+                        android:text="@string/subtitle"
+                        android:textSize="11sp"
+                        android:textColor="#8E9BB0"
+                        android:layout_marginTop="1dp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- 2. PRIMARY ACTION BUTTONS: Side-by-side Open Folder & Select Files -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <!-- Open Folder Button -->
+                <LinearLayout
+                    android:id="@+id/btnOpenFolder"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_btn_open_folder"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_folder"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/btn_open_folder"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right" />
+                </LinearLayout>
+
+                <!-- Select Files Button -->
+                <LinearLayout
+                    android:id="@+id/btnSelectFiles"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_btn_select_files"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_files"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/btn_select_files"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 3. FOLDER EXPLORER BUTTON -->
+            <LinearLayout
+                android:id="@+id/btnViewFolderList"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_btn_folder_explorer"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_icon_container"
+                    android:src="@drawable/ic_list_doc"
+                    android:padding="5dp"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/btn_open_folder_explorer"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="#38BDF8" />
+            </LinearLayout>
+
+            <!-- 4. CURRENT FILE CARD -->
+            <LinearLayout
+                android:id="@+id/cardFileInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_card_glass"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="11dp">
+
+                <!-- File Icon Badge -->
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_icon_container"
+                    android:src="@drawable/ic_list_doc"
+                    android:padding="7dp"
+                    android:layout_marginEnd="10dp" />
+
+                <!-- File Info Text Container -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_current_file_name"
+                        android:textSize="9.5sp"
+                        android:textColor="#8E9BB0" />
 
                     <TextView
                         android:id="@+id/tvFileTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No SVGA file loaded"
-                        android:textSize="15sp"
+                        android:text="Crystal frame.svga"
+                        android:textSize="14.5sp"
                         android:textStyle="bold"
-                        android:textColor="?attr/colorOnSurface"
+                        android:textColor="#FFFFFF"
                         android:ellipsize="end"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:layout_marginTop="1dp" />
                 </LinearLayout>
 
-                <ImageButton
+                <!-- Rename Action Button Pill -->
+                <LinearLayout
                     android:id="@+id/btnEditName"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/edit_icon__1_"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="Rename File" />
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_rename_button"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
 
-        <!-- Gallery Navigation Bar (Initially GONE) -->
-        <LinearLayout
-            android:id="@+id/layoutGalleryNav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="12dp"
-            android:visibility="gone">
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@drawable/ic_edit_pencil"
+                        android:layout_marginEnd="4dp" />
 
-            <Button
-                android:id="@+id/btnPrev"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:text="◀ Prev"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:backgroundTint="#A7E2DC"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_rename"
+                        android:textColor="#38BDF8"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvCounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="[ 0 / 0 ]"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnSurface"
-                android:paddingHorizontal="16dp" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btnNext"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:text="Next ▶"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:backgroundTint="#A7E2DC"/>
-        </LinearLayout>
-
-        <!-- SVGA Viewport Card (Initially GONE - Appears only when file is selected) -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardPlayerView"
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:visibility="gone"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="#000000">
-
-            <RelativeLayout
+            <!-- 5. GALLERY NAVIGATION ROW: Prev / Counter / Next -->
+            <LinearLayout
+                android:id="@+id/layoutGalleryNav"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <!-- Prev Button -->
+                <LinearLayout
+                    android:id="@+id/btnPrev"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_nav_prev_pill"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_left"
+                        android:layout_marginEnd="3dp" />
+
+                    <TextView
+                        android:id="@+id/tvPrevLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prev"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Counter Center Pill -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_counter_pill"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:layout_marginHorizontal="6dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_list_doc"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:id="@+id/tvCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 / 1"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Next Button -->
+                <LinearLayout
+                    android:id="@+id/btnNext"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_nav_next_pill"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/tvNextLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Next"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="3dp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 6. SVGA PREVIEW PLAYER CARD -->
+            <RelativeLayout
+                android:id="@+id/cardPlayerView"
+                android:layout_width="match_parent"
+                android:layout_height="390dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_player_viewport"
+                android:padding="6dp">
 
                 <com.opensource.svgaplayer.SVGAImageView
                     android:id="@+id/svgaImageView"
@@ -226,24 +386,224 @@
                     app:autoPlay="true"
                     app:clearsAfterStop="true" />
 
-                <!-- Fullscreen Toggle Overlay Button -->
-                <Button
+                <!-- Floating Fullscreen Overlay Button -->
+                <LinearLayout
                     android:id="@+id/btnFullscreen"
-                    style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="32dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="10dp"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="0dp"
-                    android:text="⛶ Fullscreen"
-                    android:textSize="11sp"
-                    app:backgroundTint="#CC000000"
-                    android:textColor="#FFFFFF" />
+                    android:layout_margin="8dp"
+                    android:background="@drawable/bg_fullscreen_btn"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="9dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:src="@drawable/ic_fullscreen"
+                        android:layout_marginEnd="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_fullscreen"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
             </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 7. STICKY BOTTOM NAVIGATION BAR STRIP CARD -->
+    <LinearLayout
+        android:id="@+id/cardFeatureStrip"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_feature_card"
+        android:orientation="horizontal"
+        android:paddingHorizontal="2dp"
+        android:paddingVertical="8dp">
+
+        <!-- Feature 1: Smooth Playback -->
+        <LinearLayout
+            android:id="@+id/navItemSmooth"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_feature_icon_blue"
+                android:padding="5dp"
+                android:src="@drawable/ic_feature_lightning" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/feature_smooth_playback"
+                android:textColor="#FFFFFF"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/feature_smooth_playback_sub"
+                android:textColor="#8E9BB0"
+                android:textSize="8.5sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:background="#1E293B" />
+
+        <!-- Feature 2: High Quality -->
+        <LinearLayout
+            android:id="@+id/navItemQuality"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_feature_icon_purple"
+                android:padding="5dp"
+                android:src="@drawable/ic_feature_sparkle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/feature_high_quality"
+                android:textColor="#FFFFFF"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/feature_high_quality_sub"
+                android:textColor="#8E9BB0"
+                android:textSize="8.5sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:background="#1E293B" />
+
+        <!-- Feature 3: Multiple Formats -->
+        <LinearLayout
+            android:id="@+id/navItemFormats"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_feature_icon_teal"
+                android:padding="5dp"
+                android:src="@drawable/ic_feature_svga" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/feature_multiple_formats"
+                android:textColor="#FFFFFF"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/feature_multiple_formats_sub"
+                android:textColor="#8E9BB0"
+                android:textSize="8.5sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:background="#1E293B" />
+
+        <!-- Feature 4: User Friendly -->
+        <LinearLayout
+            android:id="@+id/navItemFriendly"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_feature_icon_amber"
+                android:padding="5dp"
+                android:src="@drawable/ic_feature_shield" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/feature_user_friendly"
+                android:textColor="#FFFFFF"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/feature_user_friendly_sub"
+                android:textColor="#8E9BB0"
+                android:textSize="8.5sp" />
+        </LinearLayout>
 
     </LinearLayout>
-</ScrollView>
+
+</RelativeLayout>
